@@ -330,18 +330,18 @@ Specifically, add the following method to the `DevicesResource` class:
 
 ```python
 def post(self):
-    try:
-        json_data = request.get_json(force=True)
-        deviceModel = DeviceModel(**json_data)
-        if deviceModel.uuid in self.dataManager.device_dictionary:
-            return {'error': "Device UUID already exists"}, 409  
-        else:
-            self.dataManager.add_device(deviceModel)
-            return Response(status=201, headers={"Location": request.url+"/"+deviceModel.uuid})
-    except JSONDecodeError:
-        return {'error': "Invalid JSON ! Check the request"}, 400
-    except Exception as e:
-        return {'error': "Generic Internal Server Error ! Reason: " + str(e)}, 500
+  try:
+    json_data = request.get_json(force=True)
+    deviceModel = DeviceModel(**json_data)
+    if deviceModel.uuid in self.data_manager.device_dictionary:
+      return {'error': "Device UUID already exists"}, 409
+    else:
+      self.data_manager.add_device(deviceModel)
+      return Response(status=201, headers={"Location": request.url + "/" + deviceModel.uuid})
+  except JSONDecodeError:
+    return {'error': "Invalid JSON ! Check the request"}, 400
+  except Exception as e:
+    return {'error': "Generic Internal Server Error ! Reason: " + str(e)}, 500
 ```
 
 Specifically, the created code enables the following operations:
