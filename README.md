@@ -1,7 +1,7 @@
 # Python - Laboratory RESTful HTTP API
 
 This project in associated to the HTTP RESTful API Laboratory and it is used to show how to implement
-a REST API through the use of the Python programming language a the following dependencies:
+a REST API through the use of the Python programming language and the following dependencies:
 
 - Flask: https://flask.palletsprojects.com/en/2.0.x/
 - Flask RESTful: https://flask-restful.readthedocs.io/en/latest/index.html
