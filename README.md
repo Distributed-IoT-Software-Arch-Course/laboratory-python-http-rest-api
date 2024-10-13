@@ -10,6 +10,18 @@ APIs are exposed through a configurable port (7070) and accessible locally at: h
 
 In order to have additional information have a look at the official laboratory documentation and the step-by-step tutorial
 
+Laboratory structure and main sections are:
+
+- [API HTTP RESTful Specifications](#api-http-restful-specifications)
+- [Project Creation & Dependencies](#project-creation--dependencies)
+- [Model Classes](#model-classes)
+- [Device Data Manager](#device-data-manager)
+- [Creation of the Devices Resource](#creation-of-the-devices-resource)
+- [HTTP Service Creation](#http-service-creation)
+- [Creation of the Device Resource](#creation-of-the-device-resource)
+- [Creating a New Device (HTTP - POST)](#creating-a-new-device-http---post)
+- [Implementation of PUT and DELETE](#implementation-of-put-and-delete)
+
 ## API HTTP RESTful Specifications
 
 In the following subsections, the specifications of the HTTP RESTful API to be implemented are provided. 
@@ -385,7 +397,7 @@ and among the headers, the Location header contains the URL to which the client 
 make a new GET request to retrieve the representation of the created resource. 
 Perform a test with a GET request to verify the proper functioning.
 
-## Implementation of PUT (Update) and DELETE (Remove)
+## Implementation of PUT and DELETE
 
 As additional exercises, implement and add the following methods to the `DeviceResource` class:
 
