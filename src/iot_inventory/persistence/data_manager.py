@@ -1,10 +1,14 @@
-from model.device_model import DeviceModel
+from iot_inventory.model.device_model import DeviceModel
 
 class DataManager:
     """ Data Manager Class """
 
-    # Initialize the data manager with an empty dictionary to store the devices
-    device_dictionary = {}
+    def __init__(self):
+        """ Constructor """
+
+        # Initialize the data manager with an empty dictionary to store the devices
+        # (instance attribute: each DataManager has its own independent storage)
+        self.device_dictionary = {}
 
     def add_device(self, new_device):
         """ Add a new device to the data manager """

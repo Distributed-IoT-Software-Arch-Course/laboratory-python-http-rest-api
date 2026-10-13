@@ -71,9 +71,6 @@ target/
 # IPython Notebook
 .ipynb_checkpoints
 
-# pyenv
-.python-version
-
 # celery beat schedule file
 celerybeat-schedule
 
@@ -150,3 +147,6 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
+
+# macOS
+.DS_Store

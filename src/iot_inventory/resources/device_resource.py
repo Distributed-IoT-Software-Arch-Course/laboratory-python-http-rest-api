@@ -1,7 +1,7 @@
-from json import JSONDecodeError
 from flask import request, Response
 from flask_restful import Resource
-from model.device_model import DeviceModel
+from werkzeug.exceptions import BadRequest
+from iot_inventory.model.device_model import DeviceModel
 
 class DeviceResource(Resource):
     """ Device Resource Class extends Resource from Flask-RESTful to implement the HTTP Methods and RESTful API """
@@ -44,8 +44,16 @@ class DeviceResource(Resource):
                     return Response(status=204)
             else:
                 return {'error': "Device UUID not found"}, 404
-        except JSONDecodeError:
+        except BadRequest:
+            # Flask does not raise a JSONDecodeError when the body is not valid JSON: request.get_json()
+            # raises a Werkzeug BadRequest exception instead. It must be caught explicitly (and before the
+            # generic Exception) otherwise a client error would be reported as a 500 Internal Server Error
             return {'error': "Invalid JSON ! Check the request"}, 400
+        except TypeError:
+            # DeviceModel(**json_data) raises a TypeError when the JSON body does not match the constructor
+            # parameters (missing or unexpected fields) or when it is not a JSON object (e.g., a list or null).
+            # This is an error in the client request, so we return 400 Bad Request instead of 500
+            return {'error': "Invalid device data ! Check the request fields"}, 400
         except Exception as e:
             return {'error': "Generic Internal Server Error ! Reason: " + str(e)}, 500
 
